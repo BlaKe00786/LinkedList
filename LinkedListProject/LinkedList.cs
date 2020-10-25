@@ -7,7 +7,7 @@ namespace LinkedListProject
     public class LinkedList
     {
         internal Node head;
-        internal void Add(int data)
+        public void Add(int data)
         {
             Node node = new Node(data);
             if (this.head == null)
@@ -23,7 +23,7 @@ namespace LinkedListProject
             }
             Console.WriteLine("{0} inserted into the linked list", node.data);
         }
-        internal void Display()
+        public void Display()
         {
             Node temp = this.head;
             if (temp == null)
@@ -37,7 +37,7 @@ namespace LinkedListProject
                 temp = temp.next;
             }
         }
-        internal Node InsertAtParticularPosition(int position, int data)
+        public Node InsertAtParticularPosition(int position, int data)
         {
             Node temp = head;
             if (position < 1)
@@ -66,14 +66,14 @@ namespace LinkedListProject
             }
             return head;
         }
-        internal Node RemoveFirstNode()
+        public Node pop()
         {
             if (this.head == null)
                 return null;
             this.head = this.head.next;
             return this.head;
         }
-        internal Node RemoveLastNode()
+        public Node popLast()
         {
             if (head == null)
                 return null;
@@ -86,6 +86,19 @@ namespace LinkedListProject
             }
             newNode.next = null;
             return head;
+        }
+        public int Search(int value)
+        {
+            Node temp = head;
+            while (temp != null)
+            {
+                if (temp.data == value)
+                {
+                    return temp.data;
+                }
+                temp = temp.next;
+            }
+            return -1;
         }
     }
 }
