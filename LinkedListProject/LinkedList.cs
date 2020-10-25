@@ -6,15 +6,15 @@ namespace LinkedListProject
 {
     public class LinkedList
     {
-        internal Node head;
+        internal Node<int> head;
         public void Add(int data)
         {
-            Node node = new Node(data);
+            Node<int> node = new Node<int>(data);
             if (this.head == null)
                 this.head = node;
             else
             {
-                Node temp = head;
+                Node<int> temp = head;
                 while (temp.next != null)
                 {
                     temp = temp.next;
@@ -22,10 +22,11 @@ namespace LinkedListProject
                 temp.next = node;
             }
             Console.WriteLine("{0} inserted into the linked list", node.data);
+            sortAsc();
         }
         public void Display()
         {
-            Node temp = this.head;
+            Node<int> temp = this.head;
             if (temp == null)
             {
                 Console.WriteLine("Linked list is empty");
@@ -37,14 +38,14 @@ namespace LinkedListProject
                 temp = temp.next;
             }
         }
-        public Node InsertAtParticularPosition(int position, int data)
+        public Node<int> InsertAtParticularPosition(int position, int data)
         {
-            Node temp = head;
+            Node<int> temp = head;
             if (position < 1)
                 Console.WriteLine("Invalid position");
             if (position == 1)
             {
-                var newNode = new Node(data);
+                var newNode = new Node<int>(data);
                 newNode.next = this.head;
                 head = newNode;
             }
@@ -54,7 +55,7 @@ namespace LinkedListProject
                 {
                     if (position == 1)
                     {
-                        Node node = new Node(data);
+                        Node<int> node = new Node<int>(data);
                         node.next = temp.next;
                         temp.next = node;
                         break;
@@ -66,20 +67,20 @@ namespace LinkedListProject
             }
             return head;
         }
-        public Node pop()
+        public Node<int> pop()
         {
             if (this.head == null)
                 return null;
             this.head = this.head.next;
             return this.head;
         }
-        public Node popLast()
+        public Node<int> popLast()
         {
             if (head == null)
                 return null;
             if (head.next == null)
                 return null;
-            Node newNode = head;
+            Node<int> newNode = head;
             while (newNode.next.next != null)
             {
                 newNode = newNode.next;
@@ -90,7 +91,7 @@ namespace LinkedListProject
         public int Search(int value)
         {
             int position = 1;
-            Node temp = head;
+            Node<int> temp = head;
             while (temp != null)
             {
                 position = position + 1;
@@ -104,7 +105,7 @@ namespace LinkedListProject
         }
         public void DeleteNode(int key)
         {
-            Node temp = head, previous = null;
+            Node<int> temp = head, previous = null;
             if (temp != null &&
                 temp.data == key)
             {
@@ -124,7 +125,7 @@ namespace LinkedListProject
         public int size()
         {
             int size = 0;
-            Node temp = head;
+            Node<int> temp = head;
             while (temp != null)
             {
                 size = size + 1;
@@ -132,5 +133,27 @@ namespace LinkedListProject
             }
             return size;
         }
+        public void sortAsc()
+        {
+            Node<int> temp = head;
+            Node<int> firstval = null;
+            int val = 0;
+            while (temp != null)
+            {
+                firstval = temp.next;
+                while (firstval != null)
+                {
+                    if (temp.data > firstval.data)
+                    {
+                        val = firstval.data;
+                        firstval.data = temp.data;
+                        temp.data = val;
+                    }
+                    firstval = firstval.next;
+                }
+                temp = temp.next;
+            }
+        }
     }
 }
+
