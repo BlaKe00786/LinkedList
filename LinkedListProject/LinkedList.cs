@@ -102,5 +102,35 @@ namespace LinkedListProject
             }
             return -1;
         }
+        public void DeleteNode(int key)
+        {
+            Node temp = head, previous = null;
+            if (temp != null &&
+                temp.data == key)
+            {
+                head = temp.next;
+                return;
+            }
+            while (temp != null &&
+                   temp.data != key)
+            {
+                previous = temp;
+                temp = temp.next;
+            }
+            if (temp == null)
+                return;
+            previous.next = temp.next;
+        }
+        public int size()
+        {
+            int size = 0;
+            Node temp = head;
+            while (temp != null)
+            {
+                size = size + 1;
+                temp = temp.next;
+            }
+            return size;
+        }
     }
 }

@@ -7,10 +7,10 @@ namespace LinkedListProject
         static void Main(string[] args)
         {
             LinkedList list = new LinkedList();
-            int choice = 0, data, position, key, output;
+            int choice = 0, data, position, key, output,deleteValue;
             do
             {
-                Console.WriteLine("\n1.Add at last \n2.Add at particular position \n3.Delete First \n4.Delete Last \n5.Search \n6.Enter After Node \n7.exit\nEnter Your choice");
+                Console.WriteLine("\n1.Add at last \n2.Add at particular position \n3.Delete First \n4.Delete Last \n5.Search \n6.Enter After Node \n7.Delete \n8.exit \nEnter Your choice");
                 choice = Convert.ToInt32(Console.ReadLine());
                 switch(choice)
                 {
@@ -58,12 +58,19 @@ namespace LinkedListProject
                             list.InsertAtParticularPosition(output, data);
                             list.Display();
                         }
-
                         break;
-                    case 7:choice = 7;
+                    case 7:
+                        Console.WriteLine("Enter Value to be Deleted: ");
+                        deleteValue = Convert.ToInt32(Console.ReadLine());
+                        list.DeleteNode(deleteValue);
+                        list.Display();
+                        Console.WriteLine("\nSize: "+ list.size());
+                        break;
+                    case 8:
+                        choice = 8;
                         break;
                 }
-            } while (choice != 7);
+            } while (choice != 8);
         }
     }
 }
