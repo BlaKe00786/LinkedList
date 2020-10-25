@@ -8,7 +8,7 @@ namespace LinkedListTesting
         [TestMethod]
         public void SeatrchNodeGivenProperValue()
         {
-            int expected = 30;
+            int expected = 3;
             LinkedList list = new LinkedList();
             list.Add(56);
             list.Add(30);

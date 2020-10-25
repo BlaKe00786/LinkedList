@@ -7,10 +7,10 @@ namespace LinkedListProject
         static void Main(string[] args)
         {
             LinkedList list = new LinkedList();
-            int choice = 0,data,position,key,output;
+            int choice = 0, data, position, key, output;
             do
             {
-                Console.WriteLine("\n1.Add at last \n2.Add at particular position \n3.Delete First \n4.Delete Last \n5.Search \n6.exit\nEnter Your choice");
+                Console.WriteLine("\n1.Add at last \n2.Add at particular position \n3.Delete First \n4.Delete Last \n5.Search \n6.Enter After Node \n7.exit\nEnter Your choice");
                 choice = Convert.ToInt32(Console.ReadLine());
                 switch(choice)
                 {
@@ -35,19 +35,35 @@ namespace LinkedListProject
                     case 5:Console.WriteLine("Enter Value to be searched: ");
                         key = Convert.ToInt32(Console.ReadLine());
                         output=list.Search(key);
-                        if(output!=-1)
+                        if(output==-1)
                         {
-                            Console.WriteLine("Found:" + output);
+                            Console.WriteLine("not found"); 
                         }
                         else
                         {
-                            Console.WriteLine("not found");
+                            Console.WriteLine("Found");
                         }
                         break;
-                    case 6:choice = 6;
+                    case 6:Console.WriteLine("Enter Value to Insert After: ");
+                        key = Convert.ToInt32(Console.ReadLine());
+                        output = list.Search(key);
+                        if (output == -1)
+                        {
+                            Console.WriteLine("not found");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Enter Value: ");
+                            data = Convert.ToInt32(Console.ReadLine());
+                            list.InsertAtParticularPosition(output, data);
+                            list.Display();
+                        }
+
+                        break;
+                    case 7:choice = 7;
                         break;
                 }
-            } while (choice != 6);
+            } while (choice != 7);
         }
     }
 }

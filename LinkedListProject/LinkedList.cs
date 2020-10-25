@@ -89,12 +89,14 @@ namespace LinkedListProject
         }
         public int Search(int value)
         {
+            int position = 1;
             Node temp = head;
             while (temp != null)
             {
+                position = position + 1;
                 if (temp.data == value)
                 {
-                    return temp.data;
+                    return position;
                 }
                 temp = temp.next;
             }
