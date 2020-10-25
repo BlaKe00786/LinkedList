@@ -10,7 +10,7 @@ namespace LinkedListProject
             int choice = 0,data,position;
             do
             {
-                Console.WriteLine("\n1.Add at last \n2.Add at particular position \n3.Delete First \n4.exit\nEnter Your choice");
+                Console.WriteLine("\n1.Add at last \n2.Add at particular position \n3.Delete First \n4.Delete Last \n4.exit\nEnter Your choice");
                 choice = Convert.ToInt32(Console.ReadLine());
                 switch(choice)
                 {
@@ -30,10 +30,14 @@ namespace LinkedListProject
                     case 3:list.RemoveFirstNode();
                         list.Display();
                         break;
-                    case 4:choice = 4;
+                    case 4:
+                        list.RemoveLastNode();
+                        list.Display();
+                        break;
+                    case 5:choice = 5;
                         break;
                 }
-            } while (choice != 4);
+            } while (choice != 5);
         }
     }
 }
